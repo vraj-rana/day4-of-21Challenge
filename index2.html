@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <link rel="stylesheet" href="slider.css">
+</head>
+
+<body>
+    <h1 class="text">5. Dog Slider</h1>
+
+    <div class="main">
+        <div class="slider">
+
+        <div class="slides" id="slides">
+            <img src="https://i.pinimg.com/1200x/73/66/5e/73665e14b86b1c993c7259c63c430ade.jpg" />
+            <img src="https://i.pinimg.com/1200x/60/17/ea/6017ea6392bc716855c5690438140e91.jpg" />
+            <img src="https://i.pinimg.com/736x/ac/c1/4b/acc14bff3fde04a314ba0cb8eb15f640.jpg" />
+            <img src="https://i.pinimg.com/1200x/3a/84/9a/3a849a0844e2be1dff0018d35113907a.jpg" />
+            <img src="https://i.pinimg.com/736x/ef/8c/7f/ef8c7f841ead3f04e448f4ba710e86eb.jpg" />
+        </div>
+
+        <button class="btn prev" id="prev">←</button>
+        <button class="btn next" id="next">→</button>
+
+    </div>
+    </div>
+
+
+    <script>
+        const slides = document.getElementById("slides");
+        const images = document.querySelectorAll(".slides img");
+
+        const prev = document.getElementById("prev");
+        const next = document.getElementById("next");
+
+        let index = 0;
+
+        function showSlide() {
+            slides.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        next.addEventListener("click", () => {
+            index = (index + 1) % images.length;
+            showSlide();
+        });
+
+        prev.addEventListener("click", () => {
+            index = (index - 1 + images.length) % images.length;
+            showSlide();
+        });
+
+        setInterval(() => {
+            index = (index + 1) % images.length;
+            showSlide();
+        }, 7000);
+    </script>
+
+</body>
+
+</html>
